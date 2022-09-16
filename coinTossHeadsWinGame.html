@@ -7,14 +7,12 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-
-playersPointsinGame = {'system' : 0, 'you':0 }
+<script>
+    playersPointsinGame = {'system' : 0, 'you':0 }
 totalRounds = 4
 tossesInEachRound = 10
 playerNamesList = Object.keys(playersPointsinGame)
 totalscorecard = []
-roundScoresOfIndividualRounds = []
 roundCounter = 0
 
 
@@ -58,18 +56,13 @@ function overAllRunningScore(mainScoreBoard,playerNameDetails) {
     winsOfEachPlayerinEachRound[playerNameDetails[1]] = player2Points
     console.table(winsOfEachPlayerinEachRound)
     if (player1Points == player2Points) {
-
-        roundScoresOfIndividualRounds.push (' by this round Both are Draw, they Both got ' + player1Points + ' points each ')
-        return (' by this round Both are Draw, they Both got ' + player1Points + ' points each ')
+        return (' by the end of  this round Both are Draw, they Both got ' + player1Points + ' points each ')
     }
     else if ((player1Points) > (player2Points)) {
-
-        roundScoresOfIndividualRounds.push (' by this round Both are Draw, they Both got ' + player1Points + ' points each ')
-        return ('by This Round ' + playerNameDetails[0] + ' is leading,by ' + Math.abs(player1Points - player2Points) + 'Points')
+        return (' by the end of  this' + playerNameDetails[0] + ' is leading,by ' + Math.abs(player1Points - player2Points) + 'Points')
     }
     else {
-        roundScoresOfIndividualRounds.push (' by this round Both are Draw, they Both got ' + player1Points + ' points each ')
-        return ('by This Round ' + playerNameDetails[1] + ' is leading,by ' + Math.abs(player1Points - player2Points) + 'Points')
+        return (' by the end of  this' + playerNameDetails[1] + ' is leading,by ' + Math.abs(player1Points - player2Points) + 'Points')
     }
 }
 
@@ -98,18 +91,13 @@ tournment = setInterval(function eachRound() {
     else {
         roundCounter+=1
         roundMatch()
-        console.log(totalscorecard)
         return eachRound
     }
 
 }(), 15000)
 
 setTimeout(() => {
-    for(eachRoundresult=1;eachRoundresult<roundScoresOfIndividualRounds.length+1;eachRoundresult++){
-        totalscorecard.splice((eachRoundresult*10), 0, roundScoresOfIndividualRounds[eachRoundresult-1]);  
-      }
-     getCSVFile() 
-     
+    getCSVFile() 
     console.table(totalscorecard)
 
 }, 60100);
@@ -129,7 +117,6 @@ function getCSVFile() {
         cs += i.Player2Name  + ','
         cs += i.player2toss + ','
         cs += i.player2Points + ','
-        cs += i.Value + ','
         cs += '\r\n'
     }
     let tempBloB = new Blob([cs],{type: 'text\csv'})
@@ -144,6 +131,6 @@ function getCSVFile() {
     activation.remove()
 }
 
-    </script>
+</script>
 </body>
 </html>
